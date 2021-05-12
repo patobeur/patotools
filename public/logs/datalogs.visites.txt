@@ -1,0 +1,12 @@
+2021-05-12 11:38:02|CrÃ©ation du fichier.
+2021-05-12 11:38:02|test:writeToLogs()
+2021-05-12 11:41:06|test:writeToLogs()
+2021-05-12 11:41:07|test:writeToLogs()
+2021-05-12 11:41:07|test:writeToLogs()
+2021-05-12 11:44:56|test:writeToLogs()
+2021-05-12 11:44:57|test:writeToLogs()
+2021-05-12 11:44:58|test:writeToLogs()
+2021-05-12 11:46:18|test:writeToLogs()
+2021-05-12 11:47:48|test:writeToLogs()
+2021-05-12 11:48:06|test:writeToLogs()
+2021-05-12 11:48:18|test:writeToLogs()

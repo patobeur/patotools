@@ -4,7 +4,7 @@
 	// private static $_repertoiredeslogs = "../private/logs/";
 	private static $_repertoiredeslogs = "logs/"; // test folder
 	private static $_prefixfichier = "datalogs.";
-	private static $_extensionfichier = ".log";	
+	private static $_extensionfichier = ".txt";	
 	private static $_retourchariot = "\n";
 	private static $_separator = "|";
 	private static $_currentFileKey = false;
@@ -68,15 +68,19 @@
 
 			// si le fichier existe
 			if(file_exists($fullpathfilename)){
-				// on l'ouvre en ecritur
-				$fileCounter = fopen($fullpathfilename, 'a+');
+				// on ouvre le fichier en ecriture
+				$currentFileOpened = fopen($fullpathfilename, 'a+');
 				// je met du texte
-				fwrite($fileCounter, utf8_encode(self::get_promptLog() . $texte . ($callerstring??"")  .self::$_retourchariot));
-				// je ferme le fichier txt !
-				fclose($fileCounter);
+				$message = self::get_promptLog() . $texte . ($callerstring??"")  .self::$_retourchariot;
+				$message = utf8_encode($message);
+				fwrite($currentFileOpened, $message);
+				// je ferme le fichier !
+				fclose($currentFileOpened);
+				return self::$_currentFileKey;
 			}
-			self::unset_currentFileAndKey();
 		}
+		self::unset_currentFileAndKey();
+		return false;
 	}
 	
 	/**
@@ -90,10 +94,10 @@
 
 		if(!file_exists($fullpathfilename)) {
 			// creating file
-			$fileCounter = fopen($fullpathfilename, 'a+');
+			$currentFileOpened = fopen($fullpathfilename, 'a+');
 			if(file_exists($fullpathfilename)){
 				self::writeToLogs($key, "Création du fichier.",[__FILE__,__FUNCTION__,__LINE__]);
-				fclose($fileCounter);
+				fclose($currentFileOpened);
 			}
 			else {
 				Fun::print_air($fullpathfilename . " n'a pas été crée ! ERREUR !!! [".__FUNCTION__.":".__LINE__."]");
