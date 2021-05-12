@@ -16,31 +16,33 @@
 
 	new DataLogs(); //! Mounting DataLogs Class
 
+
+	$pagehtml = file_get_contents( ROOTS['vues'].""."main".ROOTS['exthtml']);
 	
-?><!DOCTYPE html>
-<html lang="fr">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Patotools</title>
-	<link href="theme/css/table.css" rel="stylesheet" media="screen">
-</head>
-<body>
-<?php
 
 	//testing print_air
 	Fun::print_air('print_r',"test");
 
 	//testing sqlToTable
-	$sqlresult =  [0 => ["action" => "testing","date" => date('Y-m-d'),"ip" => $_SERVER['REMOTE_ADDR']]];
-	$htmltable = Fun::sqlToTable($sqlresult,"");
 	Fun::print_air('sqlToTable',"test");
-	echo $htmltable;
+	$sqlresult =  [0 => ["action" => "testing","date" => date('Y-m-d'),"ip" => $_SERVER['REMOTE_ADDR']]];
+	$htmlcontent = Fun::sqlToTable($sqlresult,"");
+
+	//affichage de la page html
+	
 
 	//testing sqlToTable
-	DataLogs::writeToLogs("visites","test:writeToLogs()",[__FILE__,__FUNCTION__,__LINE__])
+	$isLogWritten = DataLogs::writeToLogs("visites","test:writeToLogs()",[__FILE__,__FUNCTION__,__LINE__]);
+	$htmlcontent .= '<a href="'.$isLogWritten['fullpathfilename'].'" target="logs">log</a>';
+
+
+
+	
+	$pagehtml = str_replace('#CONTENT#', $htmlcontent, $pagehtml);
+	Fun::set_header();
+	echo $pagehtml;
+
 ?>
-<a href="logs/datalogs.visites.log" target="logs">log</a>
+
 </body>
 </html>
