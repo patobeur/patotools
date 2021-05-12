@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	// Chrono Starter
-	define('CHRONOS',$_SERVER['REQUEST_TIME_FLOAT']);
+	define('CHRONOS',microtime(true));
 	// Constants
 	require_once('../private/definitions.php');
 	// class Loader
@@ -28,17 +28,16 @@
 	$sqlresult =  [0 => ["action" => "testing","date" => date('Y-m-d'),"ip" => $_SERVER['REMOTE_ADDR']]];
 	$htmlcontent = Fun::sqlToTable($sqlresult,"");
 
-	//affichage de la page html
-	
-
 	//testing sqlToTable
 	$isLogWritten = DataLogs::writeToLogs("visites","test:writeToLogs()",[__FILE__,__FUNCTION__,__LINE__]);
 	$htmlcontent .= '<a href="'.$isLogWritten['fullpathfilename'].'" target="logs">log</a>';
-
+	$pagehtml = str_replace('#CONTENT#', $htmlcontent, $pagehtml);
 
 
 	
-	$pagehtml = str_replace('#CONTENT#', $htmlcontent, $pagehtml);
+	$pagehtml = str_replace('#CHRONOS#', "Traitement: " . (microtime(true) - CHRONOS) . ' sec', $pagehtml);
+
+	//affichage de la page html
 	Fun::set_header();
 	echo $pagehtml;
 
