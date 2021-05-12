@@ -7,6 +7,11 @@ trait Fun {
 		$data = htmlspecialchars($data);
 		return $data;
 	}
+	static function set_header(){
+		if (!headers_sent()) {
+			header(ROOTS['htmlheader']);
+		}
+	}
 	static function dateDuJour($format='classic'){
 		switch($format){
 			case 'arrivalDate':
