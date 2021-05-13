@@ -9,6 +9,7 @@ define('SEEDS', [
 // Directories
 define('ROOTS', [
 	'htmlheader'=> 'Content-type: text/html; charset=UTF-8'
+	,'distant'=> false
 	,'vues' => SEEDS['root'].SEEDS['core'].'vues/'
 	,'functions' => SEEDS['root'].SEEDS['core'].'functions/'
 	,'class' => SEEDS['root'].SEEDS['core'].'class/'
