@@ -111,7 +111,7 @@ $Checkbdd_datas = [
 				.") ENGINE=".DB['engine']." CHARSET=".DB['charset']." COMMENT='la liste des entrés sorties des articles.';"
 			,"ALTER TABLE #TABLENAME# ADD UNIQUE KEY `id` (`id`);"
 			,"ALTER TABLE #TABLENAME# MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;"
-			,"INSERT INTO #TABLENAME# (`id`, `barrecode`, `dateheure`, `date`, `action`, `qui`, `commentaires`) VALUES (1, 'R90PHLN5', '".dateDuJour('classic')."', '".dateDuJour('dayfull')."', 'OUT', '201899990003540000', 'beta demo');"]
+			,"INSERT INTO #TABLENAME# (`id`, `barrecode`, `dateheure`, `date`, `action`, `qui`, `commentaires`) VALUES (1, 'R90PHLN5', '".Fun::dateDuJour('classic')."', '".Fun::dateDuJour('dayfull')."', 'OUT', '201899990003540000', 'beta demo');"]
 	,'membres' => [
 		"CREATE TABLE #TABLENAME# ("
 			."`membre_id` int(3) UNSIGNED NOT NULL,"
@@ -127,7 +127,7 @@ $Checkbdd_datas = [
 		,"INSERT INTO #TABLENAME# (`membre_id`,`id`, `barrecode`, `nom`, `prenom`, `section`, `annee`) VALUES 
 		(1,1,'201899990003540000','Etlardons','Patobeur','Formateur','0000'),
 		(2,2,'201899990003550000','EtFromage','Pat','Formateur','0000'),
-		(3,3,'201899990003220000','L'éponge',Bob','Formateur','000'),
+		(3,3,'201899990003220000','Léponge','Bob','Formateur','0000'),
 		(4,4,'202013390000','Zeublouz','Agathe','Administratif','0000'),
 		(5,5,'201899990003210000','VIP','Formateur','Formateur','0000');"
 		]
@@ -195,9 +195,9 @@ $Checkbdd_datas = [
 		,"ALTER TABLE #TABLENAME# ADD PRIMARY KEY (`userID`), ADD UNIQUE KEY `userEmail` (`userEmail`);"
 		,"ALTER TABLE #TABLENAME# MODIFY `userID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;"
 		,"INSERT INTO #TABLENAME# (`userID`, `userName`, `userEmail`, `userPass`, `userStatus`, `tokenCode`, `accred`, `lastconnect`, `userip`, `glpi_user`, `glpi_app`) VALUES"
-			." (null, '" . INSTALLATION['nom'] . "', '" . INSTALLATION['email'] . "', '" . INSTALLATION['password'] . "', '1', '', '".INSTALLATION['accred']."', '".dateDuJour('classic')."', '".get_ip_address()."', '', ''),"
-			." (null, '" . INSTALLATION['nom2'] . "', '" . INSTALLATION['email2'] . "', '" . INSTALLATION['password2'] . "', '1', '', '".INSTALLATION['accred2']."', '".dateDuJour('classic')."', '".get_ip_address()."', '', ''),"
-			." (null, 'Laura', 'laura@patobeur.pat', '".md5("laura")."', '1', '', '10000', '".dateDuJour('classic')."', '".get_ip_address()."', '', ''),"
-			." (null, 'Lison', 'lison@patobeur.pat', '".md5("lison")."', '1', '', '10000', '".dateDuJour('classic')."', '".get_ip_address()."', '', '');"
+			." (null, '" . INSTALLATION['nom'] . "', '" . INSTALLATION['email'] . "', '" . INSTALLATION['password'] . "', '1', '', '".INSTALLATION['accred']."', '".Fun::dateDuJour('classic')."', '".Fun::get_ip_address()."', '', ''),"
+			." (null, '" . INSTALLATION['nom2'] . "', '" . INSTALLATION['email2'] . "', '" . INSTALLATION['password2'] . "', '1', '', '".INSTALLATION['accred2']."', '".Fun::dateDuJour('classic')."', '".Fun::get_ip_address()."', '', ''),"
+			." (null, 'Laura', 'laura@patobeur.pat', '".md5("laura")."', '1', '', '10000', '".Fun::dateDuJour('classic')."', '".Fun::get_ip_address()."', '', ''),"
+			." (null, 'Lison', 'lison@patobeur.pat', '".md5("lison")."', '1', '', '10000', '".Fun::dateDuJour('classic')."', '".Fun::get_ip_address()."', '', '');"
 		,"COMMIT;"]
 ];

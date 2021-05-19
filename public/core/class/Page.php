@@ -102,16 +102,15 @@
 				$this->_set_MenuTop();
 				$this->get_Page();
 				
-				$this->pageHtml = str_replace('#MAINTITLE#', WEBSITE['head_title'], $this->pageHtml);
-				$this->pageHtml = str_replace('#JSPART#', '', $this->pageHtml);
-				$this->pageHtml = str_replace('#JSSESSION#', (ROOTS['debug'] ? '<script src="theme/js/scripts.js"></script>' : ''), $this->pageHtml);
-				// DISPLAY SESSION
-				$this->pageHtml = str_replace('#SESSIONS#', $this->print_log(), $this->pageHtml);
-				// Display  time
-				$this->pageHtml = str_replace('#ENDT#', "Traitement: " . (microtime(true) - CHRONO) . ' sec', $this->pageHtml);
-				
-				//	Fun::print_air($this->_detectGet('emprunt'),'test');
-
+				$this->pageHtml = Fun::str_aireplace($this->pageHtml,[
+					'#MAINTITLE#' => WEBSITE['head_title'],
+					'#JSPART#' => '',
+					'#JSSESSION#' => (ROOTS['debug'] ? '<script src="theme/js/scripts.js"></script>' : ''),
+					// DISPLAY SESSION
+					'#SESSIONS#' => $this->print_log(),
+					// Display  time
+					'#ENDT#' => "Traitement: " . (microtime(true) - CHRONO) . ' sec'
+				]);
 			}
 			// else {
 			// 	Datalogs::writeToLogs('errors', "ARRET DU CODE:(cause: Connexion DB innexistante ) ",[__FILE__,__FUNCTION__,__LINE__]);
@@ -123,18 +122,16 @@
 
 
 
+			// --------------------
+			// t_PageTracer
+			// Enregistrement de la position
+			if (trait_exists('t_PageTracer')) {t_PageTracer::tryClickLog(self::$_pageCurrent);}
+			else {DataLogs::writeToLogs("errors","le trait t_PageTracer n'existe pas!!!",[__FILE__,__FUNCTION__,__LINE__]);}
 
 			// --------------------
-			// AFFICHAGE DE LA PAGE
 			// SI STOP MUET
-			// --------------------
-			if (trait_exists('t_PageTracer')) {
-				t_PageTracer::tryClickLog(self::$_pageCurrent);
-			}
-			else {
-				DataLogs::writeToLogs("errors","le trait t_PageTracer n'existe pas!!!",[__FILE__,__FUNCTION__,__LINE__]);
-			}
-			
+			Fun::stop("onerror",__FUNCTION__.'(AVANT AFFICHAGE)');
+			// AFFICHAGE DE LA PAGE
 			$this->get_header();
 			echo $this->pageHtml;
 			// --------------------
@@ -166,11 +163,13 @@
 		}
 		public function get_Page(){ // NEED RENAME
 			$currentController = $this->requireonce(ROOTS['controllers'] . 'C_' . self::$_pageCurrent . ".php");
-			$this->pageHtml = str_replace('#HTML#', $currentController, $this->pageHtml);
+			// $this->pageHtml = str_replace('#HTML#', $currentController, $this->pageHtml);
+			$this->pageHtml = Fun::str_aireplace($this->pageHtml,['#HTML#' => $currentController]);
 		}
 		private function _set_MenuTop(){
 			$currentController = $this->requireonce(ROOTS['controllers'] . "C_menutop.php");
-			$this->pageHtml = str_replace('#MENUTOP#', $currentController, $this->pageHtml);
+			// $this->pageHtml = str_replace('#MENUTOP#', $currentController, $this->pageHtml);
+			$this->pageHtml = Fun::str_aireplace($this->pageHtml,['#MENUTOP#' => $currentController]);
 		}
 		private function _detectpagename(){
 			$rep = explode('/', $_SERVER['PHP_SELF']);

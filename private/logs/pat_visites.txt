@@ -1,2 +1,0 @@
-2021-05-19 12:30:34;Création du fichier.;                                                                                              ;core\class\DataLogs.php;createLogFiles;145;
-2021-05-19 12:33:05;Connexion de: userID:1 userIP:127.0.0.1 email:patobeur@patobeur.org;                                                ;lic\core\class\User.php;133;

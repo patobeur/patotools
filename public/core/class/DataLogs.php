@@ -2,6 +2,7 @@
  
  class DataLogs{
 	private static $_repertoiredeslogs = ROOTS['logs'];// ../private/logs/
+	// private static $_prefixfichier = "gestionaccueil.";
 	private static $_prefixfichier = ROOTS['prefixfilelogs']; // gestionaccueil.
 	private static $_extensionfichier = ".txt";	
 	private static $_retourchariot = "\n";
@@ -112,14 +113,24 @@
 		}
 	}
 	static private function openFile($fullpathfilename){
-		$openedFile = fopen($fullpathfilename, 'a+');//file_get_contents($path, true); 
-        if(!file_exists($fullpathfilename)){
-                throw new Exception (sprintf('Le fichier « %s » n\'existe pas .', $fullpathfilename));
-        }
-		if($openedFile == false){
-			throw new Exception (sprintf('Erreur de chargement du fichier « %s » .', $fullpathfilename));
+		try {
+			$openedFile = fopen($fullpathfilename, 'a+');
+			return $openedFile;
 		}
-		return $openedFile;
+		catch(Exception $e){
+			Fun::print_air($fullpathfilename . " n'a pas été crée ! ERREUR !!! (".$e->getMessage().")");
+			return false;
+		}
+
+
+
+		
+        // if(!file_exists($fullpathfilename)){
+        //         throw new Exception (sprintf('Le fichier « %s » n\'existe pas .', $fullpathfilename));
+        // }
+		// if($openedFile == false){
+		// 	throw new Exception (sprintf('Erreur de chargement du fichier « %s » .', $fullpathfilename));
+		// }
 	}
 	/**
 	 * createLogFiles
@@ -133,8 +144,9 @@
 		if(!file_exists($fullpathfilename)) {
 			
 			try {
-				$openedFile = self::openFile($fullpathfilename);
-				fclose($openedFile);
+				if ($openedFile = self::openFile($fullpathfilename)){
+					fclose($openedFile);
+				}
 			}
 			catch(Exception $e){
 				Fun::print_air($e->getMessage());
@@ -145,7 +157,7 @@
 				self::writeToLogs($key, "Création du fichier.",[__FILE__,__FUNCTION__,__LINE__]);
 			}
 			else {
-				Fun::print_air($fullpathfilename . " n'a pas été crée ! ERREUR !!! [".__FUNCTION__.":".__LINE__."]");
+				Fun::print_air($fullpathfilename . " n'a pas été crée ! ERREUR !!! [".__FILE__.":".__FUNCTION__.":".__LINE__."]");
 			}
 		}
 	}

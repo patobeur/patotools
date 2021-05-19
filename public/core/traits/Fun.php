@@ -9,7 +9,6 @@ trait Fun {
 		}
 
 		if ($data==="onerror") {
-			Datalogs::writeToLogs('errors', "Stop demandé si erreur par (".$source.")",[__FILE__,__FUNCTION__,__LINE__]);
 			$message = "";
 			if(count($_SESSION['die'])>0){
 				$s = $_SESSION['nbstop']>1 ? "s" : "";
@@ -24,6 +23,12 @@ trait Fun {
 				unset($_SESSION['nbstop']);
 				Datalogs::writeToLogs('errors', "unset(die et nbstop)",[__FILE__,__FUNCTION__,__LINE__]);
 				die($message . "Arret forcée onerror!!"); // pour de vrai !
+			}
+			else {
+				if (ROOTS['debug']){
+					Datalogs::writeToLogs('errors', "stop('onerror') demandé par (".$source.") mais aucunne erreur detectée",[__FILE__,__FUNCTION__,__LINE__]);
+					Datalogs::writeToLogs('errors', "stop('onerror') refusé à (".$source.") !!!",[__FILE__,__FUNCTION__,__LINE__]);
+				}
 			}
 		}
 		elseif ($data===false) {
@@ -42,8 +47,10 @@ trait Fun {
 				die($message); // pour de vrai !
 			}
 			else {
-				Datalogs::writeToLogs('errors', "stop() demandé par (".$source.") mais aucunne erreur detectée",[__FILE__,__FUNCTION__,__LINE__]);
-				Datalogs::writeToLogs('errors', "stop() refusé à (".$source.") !!!",[__FILE__,__FUNCTION__,__LINE__]);
+				if (ROOTS['debug']){
+					Datalogs::writeToLogs('errors', "stop() demandé par (".$source.") mais aucunne erreur detectée",[__FILE__,__FUNCTION__,__LINE__]);
+					Datalogs::writeToLogs('errors', "stop() refusé à (".$source.") !!!",[__FILE__,__FUNCTION__,__LINE__]);
+				}
 			}
 		}
 		elseif ($data==="clean") {
@@ -154,35 +161,37 @@ trait Fun {
 		}
 	}
 	static function sqlToTable($datasindex,$tablenom="Tableau de données"){
-				$tableau = '
-				<div class="form-page">
-					<div class="message">
-						<div class="titre">'.$tablenom.'</div>
-						<div class="table-responsive">
-							<table>#LIGNES#</table>';
-				$intitules = '';
-				$lignes = '';
-				$intituleSiLigneZero = 0;
+		if($datasindex && is_array($datasindex)){
+			$tableau = '
+			<div class="form-page">
+				<div class="message">
+					<div class="titre">'.$tablenom.'</div>
+					<div class="table-responsive">
+						<table>#LIGNES#</table>';
+			$intitules = '';
+			$lignes = '';
+			$intituleSiLigneZero = 0;
 
-				foreach($datasindex as $key => $value){
-					if (is_array($value)){
-						$colonnes = '';
-						foreach($value as $key2 => $value2){
-								$colonnes .= '<td>'.(!empty($value2) ? (is_array($value2) ? 'ARRAY': htmlentities($value2)) : 'null').'</td>';
-								if ($intituleSiLigneZero === 0) {
-									$intitules .= '<td>['.$key2.']</td>';
-								}
-						}
-						$intituleSiLigneZero++;
-						$lignes .= '<tr>'.$colonnes.'</tr>';
+			foreach($datasindex as $key => $value){
+				if (is_array($value)){
+					$colonnes = '';
+					foreach($value as $key2 => $value2){
+							$colonnes .= '<td>'.(!empty($value2) ? (is_array($value2) ? 'ARRAY': htmlentities($value2)) : 'null').'</td>';
+							if ($intituleSiLigneZero === 0) {
+								$intitules .= '<td>['.$key2.']</td>';
+							}
 					}
+					$intituleSiLigneZero++;
+					$lignes .= '<tr>'.$colonnes.'</tr>';
 				}
+			}
 
 
-				$tableau = str_replace('#LIGNES#', '<thead><tr>'.$intitules.'</tr></thead><tbody>'.$lignes.'</tbody><tfoot><tr>'.$intitules.'</tr></tfoot>', $tableau);
-				$tableau .= "</div></div></div>";
-
-				return $tableau;
+			$tableau = str_replace('#LIGNES#', '<thead><tr>'.$intitules.'</tr></thead><tbody>'.$lignes.'</tbody><tfoot><tr>'.$intitules.'</tr></tfoot>', $tableau);
+			$tableau .= "</div></div></div>";
+			return $tableau;
+		}
+		return false;
 	}
     /**
 	 * Get current user IP Address.
