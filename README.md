@@ -6,7 +6,7 @@ Class, traits and some tools i use !
 127.0.0.1 barrecode.pat
 
 ## VirtualHost
-'''
+```
 <VirtualHost *:80>
     ServerAdmin patotools@barrecode.pat
     DocumentRoot "D:/LocalWebSites/patobeur/barrecode/public"
@@ -18,4 +18,4 @@ Class, traits and some tools i use !
         Require all granted
     </Directory>
 </VirtualHost>
-'''
+```
