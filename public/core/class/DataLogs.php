@@ -1,18 +1,18 @@
  <?php
  
  class DataLogs{
-	// private static $_repertoiredeslogs = "../private/logs/";
-	private static $_repertoiredeslogs = "logs/"; // test folder
-	private static $_prefixfichier = "datalogs.";
+	private static $_repertoiredeslogs = ROOTS['logs'];// ../private/logs/
+	private static $_prefixfichier = ROOTS['prefixfilelogs']; // gestionaccueil.
 	private static $_extensionfichier = ".txt";	
 	private static $_retourchariot = "\n";
-	private static $_separator = "|";
+	private static $_separator = ";";
+	private static $_maxtexte = 115; // defaut is 130 if equal 0
+	private static $_space = " ";
 	private static $_currentFileKey = false;
-	// fichiers autorises a etres crees automatiquement si absents
-	// verifiez le CHMOD du dossier $_repertoiredeslogs
-	private static $_files = ["errors" => [],"visites" => []];
+	private static $_files = ["errors" => [],"visites" => [],"dbaccess" => []];
 
 	public function __construct(){
+		// self::writeToLogs("errors", "Test du fichier.",[__FILE__,__FUNCTION__,__LINE__]);
 		$this->checkLogFiles();
 	}
 
@@ -48,6 +48,32 @@
 		self::$_currentFileKey = false;
 	}
 	
+
+
+	static private function spaceMaker($texte){
+		$spaces = "";
+		$nbspaces = self::$_maxtexte - strlen($texte);
+		for($i = 0 ; $i < $nbspaces; $i++){
+			$spaces .= self::$_space;
+		}
+		return $spaces;
+	}
+	static private function parentToString($texte,$parentCaller=["fichier?","fonction?","ligne?"]){
+		// if (!$parentCaller[0]==="fichier?"){
+			// si on connait la fonction appelante on met des espaces
+			$textString = self::$_separator.self::spaceMaker($texte);
+			if($parentCaller!=false){
+				$textString .= (isset($parentCaller[0]) ? self::$_separator.mb_substr($parentCaller[0],-23).";" : "").
+				(isset($parentCaller[1]) ? $parentCaller[1].";" : "").
+				(isset($parentCaller[2]) ? $parentCaller[2].";" : "");
+			}
+		// }
+		return $textString;
+	}
+
+
+
+
 	/**
 	 * writeToLogs
 	 *
@@ -55,34 +81,46 @@
 	 * @param  mixed $texte string with Tabulation spaces
 	 * @return void
 	 */	
-	static public function writeToLogs($key,$texte,$caller=["fichier?","fonction?","ligne?"]){
+	static public function writeToLogs($key, $texte ,$parentCaller){
 		if(self::set_currentFileAndKey($key)){
+			$parentCaller = self::parentToString($texte,$parentCaller);
 			$fullpathfilename = self::$_currentFileKey['fullpathfilename'];
-			
-			if($key === 'errors'){
-				foreach($caller as $key){
-					$callerstring = isset($callerstring) ? $callerstring . "," . $key : $key;
-				}
-				$callerstring = "	(".$callerstring.")";
-			}
-
 			// si le fichier existe
 			if(file_exists($fullpathfilename)){
-				// on ouvre le fichier en ecriture
-				$currentFileOpened = fopen($fullpathfilename, 'a+');
-				// je met du texte
-				$message = self::get_promptLog() . $texte . ($callerstring??"")  .self::$_retourchariot;
-				$message = utf8_encode($message);
-				fwrite($currentFileOpened, $message);
-				// je ferme le fichier !
-				fclose($currentFileOpened);
-				return self::$_currentFileKey;
+				// on l'ouvre en ecriture
+				// $openedFile = fopen($fullpathfilename, 'a+');
+				
+				try {
+					$openedFile = self::openFile($fullpathfilename);
+				}
+				catch(Exception $e){
+					Fun::print_air($e->getMessage());
+					die();
+				}
+				
+				if($openedFile){
+					// je met du texte
+					fputs($openedFile, self::get_promptLog() . $texte . $parentCaller . self::$_retourchariot);
+					// je ferme le fichier txt !
+					fclose($openedFile);
+				}
+				else {
+					Fun::print_air($fullpathfilename . " n'a pas été mis à jour ! ERREUR !!! [".__FUNCTION__.":".__LINE__."]");
+				}
 			}
+			self::unset_currentFileAndKey();
 		}
-		self::unset_currentFileAndKey();
-		return false;
 	}
-	
+	static private function openFile($fullpathfilename){
+		$openedFile = fopen($fullpathfilename, 'a+');//file_get_contents($path, true); 
+        if(!file_exists($fullpathfilename)){
+                throw new Exception (sprintf('Le fichier « %s » n\'existe pas .', $fullpathfilename));
+        }
+		if($openedFile == false){
+			throw new Exception (sprintf('Erreur de chargement du fichier « %s » .', $fullpathfilename));
+		}
+		return $openedFile;
+	}
 	/**
 	 * createLogFiles
 	 *
@@ -93,11 +131,18 @@
 		$key = self::$_currentFileKey['key'];
 
 		if(!file_exists($fullpathfilename)) {
-			// creating file
-			$currentFileOpened = fopen($fullpathfilename, 'a+');
+			
+			try {
+				$openedFile = self::openFile($fullpathfilename);
+				fclose($openedFile);
+			}
+			catch(Exception $e){
+				Fun::print_air($e->getMessage());
+			}
+
+
 			if(file_exists($fullpathfilename)){
 				self::writeToLogs($key, "Création du fichier.",[__FILE__,__FUNCTION__,__LINE__]);
-				fclose($currentFileOpened);
 			}
 			else {
 				Fun::print_air($fullpathfilename . " n'a pas été crée ! ERREUR !!! [".__FUNCTION__.":".__LINE__."]");

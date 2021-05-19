@@ -1,0 +1,1004 @@
+:root {
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #2175d9;
+  --secondary: #0f1941;
+  --success: #40c019;
+  --info: #7cb7b4;
+  --warning: #ffb511;
+  --danger: #e74536;
+  --light: #f7f5f0;
+  --dark: #010101;
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --font-family-sans-serif: "Open Sans", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --palette_01: rgb(200, 226, 205);
+  --palette_02: rgb(176, 185, 168);
+  --palette_03: rgb(95, 108, 90);
+  --palette_04: rgb(184, 204, 207);
+  --palette_05: rgb(123, 144, 164);
+  --palette_06: rgb(53, 76, 89);
+  --palette_07: rgb(112, 156, 165);
+  --palette_08: rgb(18, 128, 126);
+  --palette_09: rgb(67, 68, 66);
+  --palette_10: rgb(245, 240, 230);
+  --palette_11: rgb(214, 202, 187);
+  --palette_12: rgb(233, 213, 203);
+  --palette_13: rgb(188, 160, 137);
+  --palette_14: rgb(221, 181, 131);
+  --palette_15: rgb(195, 156, 132);
+  --palette_16: rgb(157, 131, 119);
+  --palette_17: rgb(167, 105, 69);
+  --palette_18: rgb(211, 153, 83);
+  --palette_19: rgb(159, 84, 65);
+  --palette_22: rgb(127, 87, 109);
+  --palette_30: rgb(133, 132, 126);
+  --brandW: 208px;
+  --brandH: 35px;
+  --brandWMob: 125px;
+  --brandHMob: 21px;
+  --FondNav: var(--palette_22);
+  --FondNavLi: none;
+  --Fond: var(--palette_18);
+  --FondForm: var(--palette_10);
+  --FondTable: var(--palette_11);
+  --FondTableExergue: var(--palette_12);
+  --blue: rgb(255, 255, 255);
+  --jourbg: var(--blue);
+  --nuitbg: black;
+  --listeactionsW: 98%;
+  --listeactionsM: 0;
+  --listeactionsP: 0;
+  --actionsW: 100%;
+  --actionsM: 0;
+  --formulaireactionW: 98%;
+  --formulaireactionM: 5px 0;
+  --form-pageW: 80%;
+  --form-pageW-sm: 97%;
+  --form-pageM: 5px 0;
+  --formulaireW: 100%;
+  --formulaireM: 5px 0;
+  --taille_titre_formulaire: 1.5rem;
+  --formulaireactionPB: 50px;
+  --formulaireactionPT: 0;
+  --formulaireactionPT2: 0;
+  --listeactionsPB: 50px;
+  --listeactionsPT: 60px;
+  --listeactionsPT2: 35px;
+  --pagesizeW: 98%;
+  --pagesizeM: 5px 0;
+  --pagesizeMb: 1rem;
+  --pagesection: 80%;
+  --emprunt: var(--palette_18);
+  --restitution: var(--palette_08);
+  --presence: var(--palette_06);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333;
+  background-color: var(--Fond);
+}
+
+body.nuit {
+  background-color: var(--nuitbg);
+  color: white;
+}
+
+body.jour {
+  background-color: var(--blue);
+  color: black;
+}
+
+body a {
+  text-decoration: none;
+}
+
+body pre {
+  z-index: 0;
+}
+
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6 {
+  margin: 0;
+  font-family: inherit;
+  font-weight: bold;
+  line-height: 20px;
+  color: inherit;
+  text-rendering: optimizelegibility;
+}
+
+body hr {
+  margin: 20px 0;
+  border: 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #fff;
+}
+
+body input {
+  margin: 0;
+  border: 0;
+  border-color: none;
+  cursor: text;
+  width: 100%;
+}
+
+body button {
+  margin: 0 0 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 0;
+  border-color: none;
+  cursor: pointer;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.438);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.438);
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+body button:focus {
+  -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.438);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.438);
+}
+
+body .fullpage {
+  top: 0;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: none;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+body .fullpage #timer {
+  position: absolute;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  margin: 0 auto;
+  color: black;
+  background-color: rgba(251, 255, 0, 0.5);
+  text-align: center;
+  overflow: hidden;
+  bottom: 0;
+}
+
+body .fullpage #demo {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  background-color: red;
+  position: absolute;
+  bottom: -50px;
+  right: -75px;
+  width: 150px;
+  height: 100px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+body .fullpage .navactions {
+  position: fixed;
+  bottom: 30px;
+  margin: var(--actionsM);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 10;
+  overflow: hidden;
+}
+
+body .fullpage .navactions .navaction {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  margin: 5px;
+  padding: 2px 5px;
+  border-radius: 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.527);
+  -webkit-box-shadow: 0 0 2px black;
+          box-shadow: 0 0 2px black;
+}
+
+body .fullpage .navactions .navaction a,
+body .fullpage .navactions .navaction a:visited {
+  font-size: 1.5rem;
+  line-height: unset;
+  color: white;
+  text-transform: uppercase;
+}
+
+body .fullpage .navactions .navaction.emprunt {
+  background-color: var(--emprunt);
+}
+
+body .fullpage .navactions .navaction.restitution {
+  background-color: var(--restitution);
+}
+
+body .fullpage .navactions .navaction.presence {
+  background-color: var(--presence);
+}
+
+body .fullpage .listeactions {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 100px;
+  background-color: rgba(255, 255, 255, 0.2);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow-y: auto;
+}
+
+body .fullpage .listeactions .formulaireaction {
+  position: relative;
+  width: var(--formulaireactionW);
+  margin: var(--formulaireactionM);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-top: 60px;
+  padding-bottom: 100px;
+}
+
+body .fullpage .listeactions .formulaireaction .form-page {
+  position: relative;
+  -ms-flex-item-align: center;
+      align-self: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: var(--form-pageW);
+}
+
+body .fullpage .listeactions .formulaireaction .form-page .ligne,
+body .fullpage .listeactions .formulaireaction .form-page .coment {
+  position: relative;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  border-radius: 1.5rem;
+  -webkit-border-radius: 1.5rem;
+  -moz-border-radius: 1.5rem;
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.801);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.801);
+  overflow: hidden;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+body .fullpage .listeactions .formulaireaction .form-page .ligne.submit,
+body .fullpage .listeactions .formulaireaction .form-page .coment.submit {
+  margin-top: 10px;
+}
+
+body .fullpage .listeactions .formulaireaction .form-page .ligne input[type="text"],
+body .fullpage .listeactions .formulaireaction .form-page .ligne input[type="password"],
+body .fullpage .listeactions .formulaireaction .form-page .ligne button,
+body .fullpage .listeactions .formulaireaction .form-page .coment input[type="text"],
+body .fullpage .listeactions .formulaireaction .form-page .coment input[type="password"],
+body .fullpage .listeactions .formulaireaction .form-page .coment button {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin: 0;
+  width: unset;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 0;
+  border-left: 1px solid rgba(0, 0, 0, 0.281);
+  padding-left: 0.5rem;
+}
+
+body .fullpage .listeactions .formulaireaction .form-page .ligne input[type="text"],
+body .fullpage .listeactions .formulaireaction .form-page .ligne input[type="password"],
+body .fullpage .listeactions .formulaireaction .form-page .coment input[type="text"],
+body .fullpage .listeactions .formulaireaction .form-page .coment input[type="password"] {
+  border-left: 1px solid rgba(0, 0, 0, 0.281);
+}
+
+body .fullpage .listeactions .formulaireaction .form-page .ligne button,
+body .fullpage .listeactions .formulaireaction .form-page .coment button {
+  border: 0;
+  border-right: 1px solid rgba(0, 0, 0, 0.281);
+}
+
+body .fullpage .listeactions .formulaireaction .form-page .ligne.messageretour,
+body .fullpage .listeactions .formulaireaction .form-page .coment.messageretour {
+  position: relative;
+  padding: 5px 10px 10px 10px;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  border-radius: 0.5rem;
+  overflow-y: auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body .fullpage .listeactions .formulaireaction .form-page .ligne svg,
+body .fullpage .listeactions .formulaireaction .form-page .coment svg {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  max-width: 36px;
+  margin: 0;
+  padding: 0.5rem 0;
+  background-color: #fff;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+}
+
+body .fullpage .listeactions .formulaireaction .form-page .ligne svg.deuz,
+body .fullpage .listeactions .formulaireaction .form-page .coment svg.deuz {
+  max-width: content;
+  padding: 0.5rem -.5rem;
+  background-color: red;
+}
+
+body .fullpage .listeactions .formulaireaction .form-page .ligne .actreduce,
+body .fullpage .listeactions .formulaireaction .form-page .coment .actreduce {
+  position: absolute;
+  top: auto;
+  right: 5px;
+  width: 40px;
+  height: 40px;
+  z-index: 1000;
+}
+
+body .fullpage .listeactions .formulaireaction .form-page .ligne .actreduce svg,
+body .fullpage .listeactions .formulaireaction .form-page .coment .actreduce svg {
+  background-color: rgba(0, 0, 0, 0);
+  position: relative;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  padding: 0 5px 5px;
+  color: black;
+}
+
+body .fullpage .listeactions .formulaireaction .form-page .ligne .actreduce:hover,
+body .fullpage .listeactions .formulaireaction .form-page .coment .actreduce:hover {
+  cursor: pointer;
+  color: #127705;
+}
+
+body .fullpage .listeactions .formulaireaction .form-page .ligne.enregistrement,
+body .fullpage .listeactions .formulaireaction .form-page .coment.enregistrement {
+  padding: 5px 10px;
+  border-radius: 0.5rem;
+}
+
+body .fullpage .listeactions .formulaireaction .formulaire,
+body .fullpage .listeactions .formulaireaction .formcommentaires {
+  position: relative;
+  width: calc(var(--formulaireW) - 40px);
+  padding: 20px;
+  font-size: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: var(--formulaireM);
+  background-color: var(--FondForm);
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.801);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.801);
+}
+
+body .fullpage .listeactions .formulaireaction .formulaire.alerte,
+body .fullpage .listeactions .formulaireaction .formcommentaires.alerte,
+body .fullpage .listeactions .formulaireaction .message.alerte {
+  background-color: pink;
+}
+
+body .fullpage .listeactions .formulaireaction .formulaire.good,
+body .fullpage .listeactions .formulaireaction .formcommentaires.good,
+body .fullpage .listeactions .formulaireaction .message.good {
+  background-color: rgba(12, 206, 54, 0.871);
+}
+
+body .fullpage .listeactions .formulaireaction .formulaire h2,
+body .fullpage .listeactions .formulaireaction .formcommentaires h2,
+body .fullpage .listeactions .formulaireaction .message h2 {
+  font-size: var(--taille_titre_formulaire);
+  margin-bottom: 20px;
+}
+
+body .fullpage .listeactions .formulaireaction .formulaire p,
+body .fullpage .listeactions .formulaireaction .formcommentaires p,
+body .fullpage .listeactions .formulaireaction .message p {
+  margin: 0;
+}
+
+body .fullpage .listeactions .formulaireaction .formulaire:hover,
+body .fullpage .listeactions .formulaireaction .formcommentaires:hover,
+body .fullpage .listeactions .formulaireaction .message:hover {
+  -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.801);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.801);
+}
+
+body .fullpage .listeactions .formulaireaction .formulaire .label-email,
+body .fullpage .listeactions .formulaireaction .formulaire .label-word,
+body .fullpage .listeactions .formulaireaction .formcommentaires .label-email,
+body .fullpage .listeactions .formulaireaction .formcommentaires .label-word,
+body .fullpage .listeactions .formulaireaction .message .label-email,
+body .fullpage .listeactions .formulaireaction .message .label-word {
+  position: relative;
+  text-transform: uppercase;
+  font-size: 1rem;
+  color: var(--grey);
+  visibility: visible;
+  text-align: center;
+}
+
+body .fullpage .listeactions .formulaireaction .formulaire .soumission,
+body .fullpage .listeactions .formulaireaction .formcommentaires .soumission,
+body .fullpage .listeactions .formulaireaction .message .soumission {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  margin-left: auto;
+  border: 0;
+  background-size: cover;
+  background-position: center center;
+  width: 110px;
+  height: 35px;
+  background-color: none;
+}
+
+body .fullpage .listeactions .formulaireaction .formulaire .label-forget,
+body .fullpage .listeactions .formulaireaction .formcommentaires .label-forget,
+body .fullpage .listeactions .formulaireaction .message .label-forget {
+  position: relative;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  right: 2px;
+  bottom: 6em;
+  margin-left: auto;
+}
+
+body .fullpage .listeactions .formulaireaction .formcommentaires {
+  position: relative;
+  padding: 20px;
+  font-size: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+  background-color: chartreuse;
+}
+
+body .fullpage .listeactions .formulaireaction .formcommentaires h2 {
+  font-size: var(--taille_titre_formulaire);
+  margin-bottom: 20px;
+}
+
+body .fullpage .listeactions .formulaireaction .formcommentaires textarea {
+  width: 100%;
+}
+
+body .fullpage .listeactions .formulaireaction .formcommentaires .coment {
+  position: relative;
+  width: 120px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  text-align: right;
+  border-radius: 1.5rem;
+  -webkit-border-radius: 1.5rem;
+  -moz-border-radius: 1.5rem;
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.801);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.801);
+  overflow: hidden;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+body .fullpage .listeactions .formulaireaction .formcommentaires .coment.submit {
+  margin-top: 10px;
+}
+
+body .fullpage .listeactions .formulaireaction .message {
+  position: relative;
+  width: calc(var(--formulaireW) - 40px);
+  padding: 20px;
+  font-size: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: var(--formulaireM);
+  background-color: #fff;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.801);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.801);
+}
+
+body .fullpage .listeactions .formulaireaction .message .actreduce {
+  position: absolute;
+  top: auto;
+  right: auto;
+  width: 40px;
+  height: 40px;
+  z-index: 1000;
+}
+
+body .fullpage .listeactions .formulaireaction .message .actreduce svg {
+  background-color: rgba(0, 0, 0, 0);
+  position: relative;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  padding: 0 5px 5px;
+  color: black;
+}
+
+body .fullpage .listeactions .formulaireaction .message .actreduce:hover {
+  cursor: pointer;
+  color: #127705;
+}
+
+body .fullpage .listeactions .pagesize {
+  position: relative;
+  width: calc(var(--formulaireW) - 40px);
+  font-size: 1rem;
+  background-color: pink;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.801);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.801);
+  margin: 85px 0 0 0;
+}
+
+body .fullpage .listeactions .pagesize .pagesection {
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  position: relative;
+  -ms-flex-item-align: top;
+      align-self: top;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+
+body .fullpage .listeactions .pagesize .pagesection .section {
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  background-color: green;
+}
+
+body .fullpage .listeactions .pagesize .pagesection .section h2 {
+  padding: .5rem;
+}
+
+body .fullpage .listeactions .message .form-page:last-child {
+  padding-bottom: 70px;
+}
+
+body .fullpage .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 900px) {
+  body .fullpage .navactions {
+    bottom: 10px;
+  }
+  body .fullpage .navactions .navaction a svg {
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  body .fullpage .navactions .navaction a,
+  body .fullpage .navactions .navaction a:visited {
+    font-size: 1rem;
+    line-height: .5rem;
+  }
+  body .fullpage .listeactions .formulaireaction {
+    padding-top: 45px;
+    padding-bottom: 0;
+  }
+  body .fullpage .listeactions .formulaireaction .form-page:last-child {
+    padding-bottom: 45px;
+  }
+  body .fullpage .listeactions .pagesize {
+    margin-top: 50px;
+  }
+}
+
+body #divsession {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100px;
+  height: 20px;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+
+body #divsession .sessionprint {
+  overflow: hidden;
+  color: white;
+}
+
+body #divsession:not(.open) {
+  background-color: black;
+}
+
+body #divsession:not(.open) .sessionprint #fermerdivsession {
+  display: none;
+}
+
+body #divsession.open {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  background-color: none;
+}
+
+body #divsession.open .sessionprint {
+  margin: 100px 20px 20px;
+  background-color: rgba(67, 67, 67, 0.912);
+  border-radius: 2rem;
+  padding: 20px;
+}
+
+body #divsession.open .sessionprint #fermerdivsession {
+  position: -webkit-sticky;
+  /* Safari */
+  position: fixed;
+  display: unset;
+  height: content;
+  right: 50px;
+  top: 120px;
+  font-size: 3rem;
+  cursor: pointer;
+  color: white;
+  z-index: 9999999;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+body .testdev1 {
+  background-color: brown;
+}
+
+body .testdev2 {
+  background-color: #38a52a;
+}
+
+body .testdev3 {
+  background-color: #2a78a5 !important;
+}
+
+body .fullpage .listeactions .pagesize .pagesection .section div.importnav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  border-radius: 1rem;
+  padding: .3rem;
+  margin: .5rem;
+  background-color: rgba(255, 255, 255, 0.666);
+}
+
+body .fullpage .listeactions .pagesize .pagesection .section div.importnav * {
+  color: black;
+  text-decoration: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+body .fullpage .listeactions .pagesize .pagesection .section div.importnav ul.import {
+  padding: .3rem;
+  border-radius: .5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 100%;
+}
+
+body .fullpage .listeactions .pagesize .pagesection .section div.importnav ul.import li.navitem {
+  font-weight: 700;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+body .fullpage .listeactions .pagesize .pagesection .section div.importnav ul.import li.navitem ul.navitems {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 0 .5rem;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+body .fullpage .listeactions .pagesize .pagesection .section div.importnav ul.import li.navitem ul.navitems * {
+  font-weight: normal;
+}
+
+body .fullpage .listeactions .pagesize .pagesection .section div.importnav ul.import li.navitem ul.navitems li.navitem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.666);
+  border: 1 solid rgba(0, 0, 0, 0.096);
+  padding: 0 .5rem;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  border: 1px solid black;
+  border-radius: .5rem;
+  margin: 0 .3rem 0 0;
+}
+
+body .fullpage .listeactions .pagesize .pagesection .section div.importnav ul.import li.navitem ul.navitems li.navitem:hover {
+  cursor: pointer;
+  background-color: black;
+}
+
+body .fullpage .listeactions .pagesize .pagesection .section div.importnav ul.import li.navitem ul.navitems li.navitem:hover * {
+  color: white !important;
+}
+
+body .fullpage .listeactions .pagesize .pagesection .section div.sqlexport {
+  max-width: 100%;
+  padding: 1rem !important;
+  margin: 0 !important;
+}
+
+body .fullpage .listeactions .pagesize .pagesection .section div.sqlexport div.sqlrequest {
+  position: relative;
+  max-width: 100%;
+  min-height: -webkit-max-content;
+  min-height: -moz-max-content;
+  min-height: max-content;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  background-color: rgba(255, 255, 255, 0.952);
+}
+
+body .fullpage .listeactions .pagesize .pagesection .section div.sqlexport div.sqlrequest button {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  max-width: -webkit-max-content;
+  max-width: -moz-max-content;
+  max-width: max-content;
+  -ms-grid-column-align: right;
+      justify-self: right;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  z-index: 0;
+}
+
+body .fullpage .listeactions .pagesize .pagesection .section div.sqlexport div.sqlrequest textarea {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 60px;
+  height: 60px;
+}
+
+body .fullpage .listeactions .pagesize .pagesection .section div.sqlexport div.sqlrequest:hover button {
+  z-index: 2;
+}
+
+body .fullpage .listeactions .pagesize .pagesection .section div.sqlexport div.sqlrequest p {
+  padding: .5rem;
+  margin: 0;
+}
+
+body .fullpage .listeactions .pagesize .pagesection .section div.sqlexport div.sqlrequest p input {
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+}
+
+body .fullpage .listeactions .pagesize .pagesection .section div.importexport {
+  padding: 1rem;
+  padding-top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 1rem;
+}
+
+body .fullpage .listeactions .pagesize .pagesection .section div.importexport :is(.sourcedb, .destindb) {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 0;
+  max-width: 50%;
+  background-color: var(--palette_13);
+  margin: 0 !important;
+}
+
+body .fullpage .listeactions .pagesize .pagesection .section div.importexport :is(.sourcedb, .destindb) p {
+  list-style: none;
+  margin: 0;
+  margin-left: .2rem;
+}
+
+body .fullpage .listeactions .pagesize .pagesection .section div.importexport :is(.sourcedb, .destindb) div {
+  max-width: 100%;
+  height: 80Vh;
+  padding: .1rem;
+  margin: 0 !important;
+  overflow-y: auto;
+}
+
+body .fullpage .listeactions .pagesize .pagesection .section div.importexport :is(.sourcedb, .destindb) div table thead {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+@media (max-width: 1200px) {
+  body .fullpage .listeactions .formulaireaction .form-page {
+    width: var(--form-pageW-sm) !important;
+  }
+}
+/*# sourceMappingURL=style.css.map */

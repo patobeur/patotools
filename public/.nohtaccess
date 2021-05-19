@@ -1,0 +1,9 @@
+#RewriteEngine On
+#RewriteCond %{HTTPS} off
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+# onerrors
+ErrorDocument 403 http://barrecode.pat/?err403
+ErrorDocument 404 http://barrecode.pat/?err404
+ErrorDocument 500 http://barrecode.pat/?err500
+ErrorDocument 501 http://barrecode.pat/?err501
+ErrorDocument 502 http://barrecode.pat/?err502

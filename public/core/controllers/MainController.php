@@ -1,16 +1,15 @@
 <?php
+	!ROOTS['distant'] && ROOTS['debug'] ? ini_set('display_errors',1) : '';
 	$timer = microtime(true);
-	// mytools
-	require_once(ROOTS['traits'].'Fun'.ROOTS['extphp']);
-	// classLoader Traits
-	require_once(ROOTS['functions']."classLoader".ROOTS['extphp']);
+	require_once(ROOTS['sessions'].'langs.php');
+	require_once(ROOTS['functions'].'functions.php');
+	require_once(ROOTS['traits'].'Fun.php');
+	
+	require_once(ROOTS['sessions'].'session.php');
 
-	// main html vue
-	$pagehtml = file_get_contents( ROOTS['vues'].""."main".ROOTS['exthtml']);
-
-	function renderHtmlPage($pagehtml){
-		$pagehtml = str_replace('#CHRONOS#', "Traitement: " . (microtime(true) - CHRONOS) . ' sec', $pagehtml);
-		//affichage de la page html
-		Fun::set_header();
-		echo $pagehtml; // echo or print ??? what else ?
-	}
+	new DataLogs(); //! Mounting DataLogs Class
+	new Database(); //! Mounting Database Class
+	new Checkbdd(); //! Mounting Checkbdd Class
+	new User(); //! Mounting User Class
+	new Page(); //! Mounting Page Class
+	

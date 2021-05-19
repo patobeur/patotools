@@ -2,14 +2,14 @@
   --blu: #0000FF;
 }
 
-.fun-table {
-  width: 80%;
-  max-width: 80%;
+.table-responsive {
+  width: 100%;
+  max-width: 100%;
   overflow-x: auto;
-  border-radius: .8rem;
+  border-radius: .7rem;
 }
 
-.fun-table table {
+table {
   border-spacing: 0;
   border-collapse: separate;
   width: 100%;
@@ -28,29 +28,29 @@
   background-color: azure;
 }
 
-.fun-table table a:link {
+table a:link {
   color: #0400ff;
   font-weight: bold;
   text-decoration: none;
 }
 
-.fun-table table a:visited {
+table a:visited {
   color: #0400d4;
   font-weight: bold;
   text-decoration: none;
 }
 
-.fun-table table :is(a:active, a:hover) {
-  color: #315a10;
+table :is(a:active, a:hover) {
+  color: #0400d4;
   text-decoration: underline;
 }
 
-.fun-table table tbody tr {
+table tbody tr {
   text-align: center;
   padding-left: 5px;
 }
 
-.fun-table table tbody tr td {
+table tbody tr td {
   border-spacing: 0;
   border-collapse: separate;
   padding: 0;
@@ -61,62 +61,63 @@
   background: -moz-linear-gradient(top, #ffffff, #fafafa);
 }
 
-.fun-table table tbody tr td :first-child {
+table tbody tr td :first-child {
   text-align: left;
   padding-left: 0;
   border-left: 0;
 }
 
-.fun-table table tbody tr td.event {
+table tbody tr td.event {
   background: var(--palette_02);
 }
 
-.fun-table table tbody tr.event {
+table tbody tr.event {
   background: var(--blu);
 }
 
-.fun-table table tbody tr:first-child th:first-child {
+table tbody tr:first-child th:first-child {
   border-top-left-radius: .5rem;
 }
 
-.fun-table table tbody tr:first-child th:last-child {
+table tbody tr:first-child th:last-child {
   border-top-right-radius: .5rem;
 }
 
-.fun-table table tbody tr:last-child td {
+table tbody tr:last-child td {
   border-bottom: 0;
 }
 
-.fun-table table tbody tr:last-child td:first-child {
+table tbody tr:last-child td:first-child {
   border-bottom-left-radius: 3px;
 }
 
-.fun-table table tbody tr:last-child td:last-child {
+table tbody tr:last-child td:last-child {
   border-bottom-right-radius: 3px;
 }
 
-.fun-table table tbody tr:hover td {
+table tbody tr:hover td {
   background: #f2f2f2;
   background: -moz-linear-gradient(top, #f2f2f2, #f0f0f0);
 }
 
-.fun-table table thead,
-.fun-table table tfoot {
+table thead,
+table tfoot {
   padding: 21px 25px 22px 25px;
   border-top: 1px solid #fafafa;
   border-bottom: 1px solid #e0e0e0;
   background: -moz-linear-gradient(top, #ededed, #ebebeb);
 }
 
-.fun-table table thead tr,
-.fun-table table tfoot tr {
-  background: #8786a1;
+table thead tr,
+table tfoot tr {
+  background: #737381;
 }
 
-.fun-table table thead tr td,
-.fun-table table tfoot tr td {
+table thead tr td,
+table tfoot tr td {
   text-align: center;
   background: none;
   color: white;
+  padding: 3px 2px;
 }
 /*# sourceMappingURL=table.css.map */
