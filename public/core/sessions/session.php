@@ -30,7 +30,11 @@
             'ipv4' => Fun::get_ip_address()
         ];
         $_SESSION['cms'] = [
-            'tools' => '<a class=cms href=exit.php>exit</a>'
+            'EXIT' => '<a class=cms href=?exit>Exit</a>',
+            'Readersql' => '<a class=cms href=?readersql>Readersql Testing</a>',
+            'Importsql' => '<a class=cms href=?importsql>Importsql Testing</a>',
+            'Glpi' => '<a class=cms href=?glpi>Glpi Testing</a>',
+            'test' => '<a class=cms href=?fggfgqggsgs>Just Testing</a>'
         ];
     }
 
