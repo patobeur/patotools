@@ -62,3 +62,21 @@ tout est dans checkbdd_datas.php ( tout en bas)
 ## droits d'écriture utiles pour les dossier logs
 
 chown -R www-data:www-data private/logs
+
+## quelques codes barre user
+
+```
+(1,1,'000000000000000001','Etlardons','Patobeur','Formateur','0000'),
+(2,2,'000000000000000002','EtFromage','Pat','Formateur','0000'),
+(3,3,'000000000000000003','Léponge','Bob','Formateur','0000'),
+(4,4,'000000000000000004','Zeublouz','Agathe','Administratif','0000'),
+(5,5,'000000000000000005','VIP','Formateur','Formateur','0000')
+```
+
+## quelques codes barre articles
+
+```
+(NULL,'100000000000000001','PAT-T1000','null','null','null','1'),
+(NULL,'100000000000000002','PAT-EE-8eu','null','null','null','1'),
+(NULL,'100000000000000003','PAT-HATE-CHAUDE','null','null','null','1')
+```
