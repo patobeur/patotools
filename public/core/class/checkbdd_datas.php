@@ -16,9 +16,9 @@ $Checkbdd_datas = [
 		,"ALTER TABLE #TABLENAME# ADD PRIMARY KEY (`id`);"
 		,"ALTER TABLE #TABLENAME# MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;"
 		,"INSERT INTO #TABLENAME# (`id`, `barrecode`, `nom_article`, `os`, `cpumhz`, `comment`, `valide`) VALUES
-			(NULL,'AAAAAAAAAAA','PAT-T1000','null','null','null','1'),
-			(NULL,'BBBBBBBBBBB','PAT-EE-8eu','null','null','null','1'),
-			(NULL,'CCCCCCCCCCC','PAT-HATE-CHAUDE','null','null','null','1');"]
+			(NULL,'100000000000000001','PAT-T1000','null','null','null','1'),
+			(NULL,'100000000000000002','PAT-EE-8eu','null','null','null','1'),
+			(NULL,'100000000000000003','PAT-HATE-CHAUDE','null','null','null','1');"]
 	,'contents' => [
 		"CREATE TABLE #TABLENAME# ("
 			."`id` int(10) UNSIGNED NOT NULL,"
@@ -125,11 +125,11 @@ $Checkbdd_datas = [
 		,"ALTER TABLE #TABLENAME# ADD PRIMARY KEY (`membre_id`), ADD UNIQUE KEY `barrecode` (`barrecode`);"
 		,"ALTER TABLE #TABLENAME# MODIFY `membre_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;"
 		,"INSERT INTO #TABLENAME# (`membre_id`,`id`, `barrecode`, `nom`, `prenom`, `section`, `annee`) VALUES 
-		(1,1,'201899990003540000','Etlardons','Patobeur','Formateur','0000'),
-		(2,2,'201899990003550000','EtFromage','Pat','Formateur','0000'),
-		(3,3,'201899990003220000','Léponge','Bob','Formateur','0000'),
-		(4,4,'202013390000','Zeublouz','Agathe','Administratif','0000'),
-		(5,5,'201899990003210000','VIP','Formateur','Formateur','0000');"
+		(1,1,'000000000000000001','Etlardons','Patobeur','Formateur','0000'),
+		(2,2,'000000000000000002','EtFromage','Pat','Formateur','0000'),
+		(3,3,'000000000000000003','Léponge','Bob','Formateur','0000'),
+		(4,4,'000000000000000004','Zeublouz','Agathe','Administratif','0000'),
+		(5,5,'000000000000000005','VIP','Formateur','Formateur','0000');"
 		]
 	,'pages' => [
 		"CREATE TABLE #TABLENAME# ("
