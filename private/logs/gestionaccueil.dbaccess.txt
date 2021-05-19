@@ -1,1 +1,0 @@
-2021-05-18 13:44:34;Création du fichier.;                                                                                              ;core\class\DataLogs.php;createLogFiles;145;
